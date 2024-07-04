@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ak movie</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='styles/landing.css') }}" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Logo and App Name -->
+        <div class="d-flex justify-content-start align-items-center mt-3">
+            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo" width="120" class="rounded-logo">
+            <h2 class="ml-3">Ak movie Search</h2>
+        </div>
+
+        <!-- Header and Subheader -->
+        <div class="text-center mt-5">
+            <h1>Discover and Explore Your Favorite Movies</h1>
+            <p class="lead">Search and find detailed information about any movie.</p>
+        </div>
+
+        <!-- Call to Action -->
+        <div class="text-center my-4">
+            <a href="{{ url_for('views.home') }}" class="btn cta-button btn-lg">Get Started</a>
+        </div>
+
+        <!-- Trending Movies Section -->
+        <div class="featured-movies row">
+            <!-- Repeat this block for each featured movie -->
+            <div class="col-md-3 col-sm-6 mb-4">
+                <div class="movie bg-white p-3">
+                    <img src="static/images/hard-feelings.jpg" class="img-fluid" alt="Movie Poster">
+                    <div class="movie-title mt-2">
+                        <h5>No Hard Feelings</h5>
+                        <p>Release Year: June 2024</p>
+                        <p>Rating: 8.5/10</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 mb-4">
+                <div class="movie bg-white p-3">
+                    <img src="static/images/foot.jpg" class="img-fluid" alt="Movie Poster">
+                    <div class="movie-title mt-2">
+                        <h5>Footloose</h5>
+                        <p>Release Year: April 2024</p>
+                        <p>Rating: 7.8/10</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 mb-4">
+                <div class="movie bg-white p-3">
+                    <img src="static/images/interstellar.jpg" class="img-fluid" alt="Movie Poster">
+                    <div class="movie-title mt-2">
+                        <h5>Interstellar</h5>
+                        <p>Release Year: 2022</p>
+                        <p>Rating: 9.0/10</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 mb-4">
+                <div class="movie bg-white p-3">
+                    <img src="static/images/bad boy.jpg" class="img-fluid" alt="Movie Poster">
+                    <div class="movie-title mt-2">
+                        <h5>Bad Boys II</h5>
+                        <p>Release Year: 2021</p>
+                        <p>Rating: 8.0/10</p>
+                    </div>
+                </div>
+            </div>
+            <!-- End of movie block -->
+        </div>
+
+        <!-- Footer -->
+        <div class="footer text-center mt-5">
+          <a href="{{ url_for('views.about') }}">About Us</a> | <a href="#">Contact</a>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+

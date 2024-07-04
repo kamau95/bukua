@@ -1,0 +1,32 @@
+/* website/static/styles.css */
+body {
+    background-color: #f4f4f4;
+}
+
+.cta-button {
+    background-color: #ff6f61;
+    color: white;
+}
+
+.movie {
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    padding: 10px;
+}
+
+.footer {
+    background-color: #202d62;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.footer a {
+    color: #ff6f61;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+.rounded-logo {
+        border-radius: 50%; /* This makes the corners round */
+    }
+

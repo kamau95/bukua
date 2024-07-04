@@ -37,6 +37,7 @@ class Movie(db.Model):
     title =db.Column(db.String(250), nullable=False)
     api_id = db.Column(db.String(255), unique=True, nullable=False)  # Unique ID from the external API
     release_year =db.Column(db.Integer)
+    poster_path = db.Column(db.String(255))
     favorited_by = db.relationship('User', secondary=favorites_association, back_populates='favorite_movies')
 
 

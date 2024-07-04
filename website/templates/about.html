@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Movie Search App</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='styles/about.css') }}" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <!-- About Us Section -->
+        <div class="about-us">
+            <h1>About Movie Search App</h1>
+            <p>
+                The ak Movie Search was inspired by great passion for movies and the desire to create a seamless platform for movie enthusiasts to discover and explore their favorite films. The journey began in june 2024, driven by the goal to combine love for cinema with my technical skills. This project is also part of my Portfolio Project for Holberton School, showcasing my capabilities and dedication to web development. You can learn more about Holberton School <a href="https://www.holbertonschool.com" target="_blank">here</a>.
+            </p>
+
+            <h2>Meet the Team</h2>
+            <div class="team-members row">
+                <!-- Repeat this block for each team member -->
+                <div class="col-md-4 text-center">
+                    <img src="static/images/member_photo.jpg" alt="Member Photo" class="rounded-circle mb-3" width="450">
+                    <h4>Team Member Name</h4>
+                    <p>
+                        <a href="https://www.linkedin.com/public-profile/settings?trk=d_flagship3_profile_self_view_public_profile" target="_blank">LinkedIn</a> |
+                        <a href="https://github.com/kamau95" target="_blank">GitHub</a> |
+                        <a href="https://twitter.com/member-profile" target="_blank">Twitter</a>
+                    </p>
+                </div>
+                <!-- Repeat for other team members -->
+            </div>
+
+            <h2>Project Repository</h2>
+            <p>
+                You can find the source code for the Movie Search App on our <a href="https://github.com/kamau95/bukua" target="_blank">GitHub repository</a>.
+            </p>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer text-center mt-5">
+            <a href="{{ url_for('views.landing') }}">Back to Landing Page</a>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+
