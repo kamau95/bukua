@@ -1,8 +1,15 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
+from flask_cors import CORS
+from flask_login import current_user
 from sqlalchemy import create_engine
+from dotenv import load_dotenv
+import os
 from os import path
+from flask_migrate import Migrate
+
+
 
 
 # Import the db object from models
@@ -10,21 +17,31 @@ from .models import db, User
 
 
 def create_app():
+    load_dotenv()  # Load environment variables from .env file
+
+
     app = Flask(__name__)
-    app.config['SECRET_KEY'] = 'nikubayaman'
+    app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
+    
+
+    @app.context_processor
+    def inject_user():
+        return dict(user=current_user)
 
 
-    # MySQL Configuration
-    username = 'kamau'
-    password = 'soft%40402'
-    hostname = 'localhost'  # or your database server's address
-    database_name = 'movie_search'
-    app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql+pymysql://{username}:{password}@{hostname}/{database_name}'
+    app.config['SQLALCHEMY_DATABASE_URI'] = f"mysql+pymysql://{os.getenv('username')}:{os.getenv('password')}@{os.getenv('hostname')}/{os.getenv('database_name')}"
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 
     #initialize sqlalchemy
     db.init_app(app)
+
+
+    # Initialize Flask-Migrate
+    migrate = Migrate(app, db)
+
+    # Initialize Flask-CORS
+    CORS(app, resources={r"/*": {"origins": "http://127.0.0.1:5000"}})
 
 
     # Create all tables

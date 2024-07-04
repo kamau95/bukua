@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Favorite Movies{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="display-4">Favorite Movies</h1>
+    <div class="row">
+        {% for movie in favorite_movies %}
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+                <img src="{{ movie.poster_path }}" class="card-img-top" alt="{{ movie.title }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ movie.title }}</h5>
+                    <p class="card-text"><strong>Released:</strong> {{ movie.release_year }}</p>
+                    <button type="button" class="btn btn-danger" onClick="deleteMovie({{ movie.api_id }})">
+                        Delete Movie
+                    </button>
+                         <!-- <a href="#" class="btn btn-danger">Delete from Favorites</a>--->
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+
