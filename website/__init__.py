@@ -19,10 +19,7 @@ from .models import db, User
 def create_app():
     load_dotenv()  # Load environment variables from .env file
 
-    username = os.getenv('MYSQL_USER')
-    password = os.getenv('MYSQL_PASSWORD')
-    hostname = os.getenv('MYSQL_HOST')
-    database_name = os.getenv('MYSQL_DB')
+    database_uri = os.getenv('DATABASE_URI')
     secret_key = os.getenv('SECRET_KEY')
     tmdb_api_key = os.getenv('TMDB_API_KEY')
 
@@ -35,9 +32,18 @@ def create_app():
         return dict(user=current_user)
 
 
-    app.config['SQLALCHEMY_DATABASE_URI'] = f"mysql+pymysql://{username}:{password}@{hostname}/{database_name}"
+    app.config['SQLALCHEMY_DATABASE_URI'] = database_uri
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
+
+    # SSL configuration
+    app.config['SQLALCHEMY_ENGINE_OPTIONS'] = {
+    'connect_args': {
+    'ssl': {
+    'ca': 'certs/ca.cert'
+    }
+    }
+    }
 
     #initialize sqlalchemy
     db.init_app(app)
