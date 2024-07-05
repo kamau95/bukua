@@ -19,9 +19,15 @@ from .models import db, User
 def create_app():
     load_dotenv()  # Load environment variables from .env file
 
+    username = os.getenv('MYSQL_USER')
+    password = os.getenv('MYSQL_PASSWORD')
+    hostname = os.getenv('MYSQL_HOST')
+    database_name = os.getenv('MYSQL_DB')
+    secret_key = os.getenv('SECRET_KEY')
+    tmdb_api_key = os.getenv('TMDB_API_KEY')
 
     app = Flask(__name__)
-    app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
+    app.config['SECRET_KEY'] = secret_key
     
 
     @app.context_processor
@@ -29,7 +35,7 @@ def create_app():
         return dict(user=current_user)
 
 
-    app.config['SQLALCHEMY_DATABASE_URI'] = f"mysql+pymysql://{os.getenv('username')}:{os.getenv('password')}@{os.getenv('hostname')}/{os.getenv('database_name')}"
+    app.config['SQLALCHEMY_DATABASE_URI'] = f"mysql+pymysql://{username}:{password}@{hostname}/{database_name}"
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 
