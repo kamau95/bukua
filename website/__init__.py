@@ -54,8 +54,7 @@ def create_app():
     migrate = Migrate(app, db)
 
     # Initialize Flask-CORS
-    CORS(app, resources={r"/*": {"origins": "http://127.0.0.1:5000"}})
-
+    CORS(app, resources={r"/*": {"origins": "*"}})
 
     # Create all tables
     with app.app_context():
