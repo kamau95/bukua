@@ -25,7 +25,8 @@ def create_app():
 
     app = Flask(__name__)
     app.config['SECRET_KEY'] = secret_key
-    app.config['DEBUG'] = os.getenv('FLASK_DEBUG', 'False').lower() == 'true' 
+    app.config['DEBUG'] = False
+    #app.config['DEBUG'] = os.getenv('FLASK_DEBUG', 'False').lower() == 'true' 
 
     @app.context_processor
     def inject_user():
