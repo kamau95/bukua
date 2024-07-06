@@ -25,7 +25,7 @@ def create_app():
 
     app = Flask(__name__)
     app.config['SECRET_KEY'] = secret_key
-    
+    app.config['DEBUG'] = os.getenv('FLASK_DEBUG', 'False').lower() == 'true' 
 
     @app.context_processor
     def inject_user():
@@ -39,10 +39,10 @@ def create_app():
     # SSL configuration
     app.config['SQLALCHEMY_ENGINE_OPTIONS'] = {
     'connect_args': {
-    'ssl': {
-    'ca': 'certs/ca.cert'
-    }
-    }
+        'ssl': {
+            'ca': 'certs/ca.cert'
+        }
+      }
     }
 
     #initialize sqlalchemy
