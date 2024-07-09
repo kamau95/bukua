@@ -5,7 +5,7 @@ from sqlalchemy.orm import relationship, sessionmaker
 from flask_login import UserMixin
 from sqlalchemy.sql import func
 
-
+#Initialize SQLAlchemy instance
 db = SQLAlchemy()
 
 
@@ -32,6 +32,10 @@ class User(db.Model, UserMixin):
 
 
 class Movie(db.Model):
+    """
+    Represents a movie table with columns id, title, api_id,
+    release_year, and poster_path.
+    """
     __tablename__ = 'movies'
     id = db.Column(db.Integer, primary_key=True)
     title =db.Column(db.String(250), nullable=False)
@@ -39,5 +43,6 @@ class Movie(db.Model):
     release_year =db.Column(db.Integer)
     poster_path = db.Column(db.String(255))
     favorited_by = db.relationship('User', secondary=favorites_association, back_populates='favorite_movies')
+
 
 

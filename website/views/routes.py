@@ -6,7 +6,7 @@ from sqlalchemy.orm import joinedload
 from datetime import datetime
 from website.utils import construct_poster_url
 
-
+# Define the Blueprint for the views
 views = Blueprint('views', __name__)
 
 
@@ -28,7 +28,7 @@ def search_results():
             flash('Enter title and the year', category='danger')
             return redirect(url_for('views.home'))
 
-
+        # Fetch movies from the external API
         movies = fetch_movies(query, primary_release_year)
         if movies is None:
             flash('Failed to fetch movies. Please try again later.', category='danger')
@@ -107,10 +107,12 @@ def delete_movie():
     api_id = data['api_id']
     user = current_user
 
+    # Find the movie by api_id
     movie = Movie.query.filter_by(api_id=api_id).first()
     if not movie:
         return jsonify({"error": "movie not found"}), 404
     
+    # Remove the movie from the user's favorites
     if movie in user.favorite_movies:
         user.favorite_movies.remove(movie)
         db.session.commit()
