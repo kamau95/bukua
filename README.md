@@ -5,7 +5,7 @@ Welcome to the Movie Search Application! This project allows users to search for
 
 [Deployed Site](https://akmovie3-spfd2ozc.b4a.run/)
 
-[Final Project Blog Article](http://your-blog-article-url.com)
+[Final Project Blog Article](https://medium.com/@linuskamau586/building-the-akmovie-search-application-457fafc3297a)
 
 ### Authors
 https://www.linkedin.com/in/kamau-linus-1b9808238
