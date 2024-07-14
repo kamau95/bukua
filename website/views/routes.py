@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify, render_template, flash, url_for, request, redirect
+from flask import Blueprint, current_app, jsonify, render_template, flash, url_for, request, redirect
 from flask_login import login_required, current_user
 from ..movie_service import fetch_movies, get_or_create
 from ..models import db, Movie, User
@@ -30,7 +30,9 @@ def search_results():
 
         # Fetch movies from the external API
         movies = fetch_movies(query, primary_release_year)
+        current_app.logger.debug(f"Fetched movies: {movies}")
         if movies is None:
+            current_app.logger.error("Failed to fetch movies from external API")
             flash('Failed to fetch movies. Please try again later.', category='danger')
             return redirect(url_for('views.home'))
 
